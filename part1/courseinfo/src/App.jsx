@@ -5,7 +5,7 @@ const Header = (props) => {
 const Part = (props) => {
     return (
         <p>
-            {props.name} {props.count}
+            {props.name} {props.exercises}
         </p>
     );
 };
@@ -13,30 +13,41 @@ const Part = (props) => {
 const Content = (props) => {
     return (
         <>
-            <Part name={props.coursework[0][0]} count={props.coursework[0][1]} />
-            <Part name={props.coursework[1][0]} count={props.coursework[1][1]} />
-            <Part name={props.coursework[2][0]} count={props.coursework[2][1]} />
+            <Part name={props.parts[0].name} exercises={props.parts[0].exercises} />
+            <Part name={props.parts[1].name} exercises={props.parts[1].exercises} />
+            <Part name={props.parts[2].name} exercises={props.parts[2].exercises} />
         </>
     );
 };
 
 const Total = (props) => {
-    return <p>Number of exercises {props.coursework[0][1] + props.coursework[1][1] + props.coursework[2][1]}</p>;
+    return <p>Number of exercises {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</p>;
 };
 
 const App = () => {
-    const course = 'Half Stack application development';
-    const coursework = [
-        ['Fundamentals of React', 10],
-        ['Using props to pass data', 7],
-        ['State of a component', 14],
-    ];
+    const info = {
+        course: 'Half Stack application development',
+        parts: [
+            {
+                name: 'Fundamentals of React',
+                exercises: 10,
+            },
+            {
+                name: 'Using props to pass data',
+                exercises: 7,
+            },
+            {
+                name: 'State of a component',
+                exercises: 14,
+            },
+        ],
+    };
 
     return (
         <>
-            <Header course={course} />
-            <Content coursework={coursework} />
-            <Total coursework={coursework} />
+            <Header course={info.course} />
+            <Content parts={info.parts} />
+            <Total parts={info.parts} />
         </>
     );
 };
