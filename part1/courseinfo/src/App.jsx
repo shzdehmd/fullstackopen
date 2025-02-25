@@ -1,33 +1,27 @@
 const Header = (props) => {
+    return <h1>{props.course}</h1>;
+};
+
+const Part = (props) => {
     return (
-        <>
-            <h1>{props.course}</h1>
-        </>
+        <p>
+            {props.name} {props.count}
+        </p>
     );
 };
 
 const Content = (props) => {
     return (
         <>
-            <p>
-                {props.coursework[0][0]} {props.coursework[0][1]}
-            </p>
-            <p>
-                {props.coursework[1][0]} {props.coursework[1][1]}
-            </p>
-            <p>
-                {props.coursework[2][0]} {props.coursework[2][1]}
-            </p>
+            <Part name={props.coursework[0][0]} count={props.coursework[0][1]} />
+            <Part name={props.coursework[1][0]} count={props.coursework[1][1]} />
+            <Part name={props.coursework[2][0]} count={props.coursework[2][1]} />
         </>
     );
 };
 
 const Total = (props) => {
-    return (
-        <>
-            <p>Number of exercises {props.coursework[0][1] + props.coursework[1][1] + props.coursework[2][1]}</p>
-        </>
-    );
+    return <p>Number of exercises {props.coursework[0][1] + props.coursework[1][1] + props.coursework[2][1]}</p>;
 };
 
 const App = () => {
@@ -39,11 +33,11 @@ const App = () => {
     ];
 
     return (
-        <div>
+        <>
             <Header course={course} />
             <Content coursework={coursework} />
             <Total coursework={coursework} />
-        </div>
+        </>
     );
 };
 
